@@ -15,7 +15,9 @@
             <strong>{{ boldmessage}}</strong><br />
         </div>
 
+
         <div>
+             <h2>Most liked Pages</h2>
             {% if category %}
             <ul>
                 {% for category in category %}
@@ -29,11 +31,28 @@
             {% endif %}
         </div>
 
+         <div>
+
+            <h2>Most Viewed Pages</h2>
+             {% if pages %}
+                 <ul>
+                 {% for page in pages %}
+                    <li><a href=" {{ page.url }}">{{ page.title }}</a></li>
+                 {% endfor %}
+                 </ul>
+             {% else %}
+                 <strong>No pages currently in category.</strong>
+            {% endif %}
+
+
+        </div>
+
         <div>
             <a href=" /rango/about/">About Rango</a><br />
             <img src="{% static "images/picture.jpg" %}"
                 alt="Picture of Rango" />
         </div>
+
     </body>
 
 </html>

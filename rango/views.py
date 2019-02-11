@@ -7,7 +7,8 @@ from django.http import HttpResponse
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
-    context_dict = {'category': category_list}
+    page_list = Page.objects.order_by('-views')[:5]
+    context_dict = {'category': category_list, 'pages': page_list}
     return render(request, 'rango/index.html', context_dict)
 
 def show_category(request, category_name_slug):
@@ -26,6 +27,7 @@ def show_category(request, category_name_slug):
         context_dict['pages'] = None
 
     return render(request, 'rango/category.html', context_dict)
+
 
 def about(request):
     print(request.method)
